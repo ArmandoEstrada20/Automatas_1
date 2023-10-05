@@ -1,0 +1,55 @@
+const fs = require('fs');
+
+const nombreArchivo = 'database.txt';
+const Errores = 'logErrores.txt';
+const hdArchivo = ['nick','matricula', 'facu', 'carrera', 'promedio', 'edad', 'correo'];
+
+//Verificamos si el archivo esta creado.
+if(!fs.existsSync(nombreArchivo)){
+    //En caso de que no exista, lo creamos.
+    fs.writeFileSync(nombreArchivo, '', 'utf8');
+    console.log(`El archivo ${filename} ha sido creado.`);
+}
+
+let errorLog = '';
+
+fs.readFile('database.txt', 'utf8', (err, data) => {
+    if(err){
+        console.error(err);
+        return;
+    }
+  var cadena_split = data.split('\n');
+  const top = cadena_split[0].split(",")
+  console.log(top);
+
+  if(hdArchivo.length != top.length){
+    errorLog += `Error: la cantidad de las columnas no coincide...\n`;
+  }
+
+  for(let i=1; i < cadena_split.length; i++){
+        var query = cadena_split[i].split(",");
+        //Valida la cantidad de columnas
+        if(hdArchivo.length !== query.length){
+            errorLog += `Error en el renglon ${i}: Datos incorrectos o incompletos\n`;
+            continue;
+        }
+        //Valida que todas las columnas tengan datos
+        if(query.some(cell => cell.trim() === '')){
+            errorLog += `Error en el renglon ${i}: Datos incorrectos o incompletos\n`;
+            continue;
+        }
+
+        console.log("Renglon " + i + " : " + cadena_split[i]);
+        query.forEach(function(queryData, index){
+            console.log(top[index] + ":" + queryData);
+        });
+    }
+
+    //Creación del nuevo archivo para el registro de los errores
+    if(errorLog){
+        fs.writeFileSync(Errores, errorLog, 'utf8');
+        console.log(`Los errores fueron registrados en ${Errores}`);
+    } else {
+        console.log("No se registraron errores...");
+    }
+});
