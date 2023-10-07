@@ -15,7 +15,7 @@ function validacionTD(dato, tipo){
         case'number':
             return !isNaN(dato);
         case 'float':
-            return !isNaN(dato) && dato.includes('.');
+            return !isNaN(dato);
         default:
             return false;
     }

@@ -1,8 +1,4 @@
-Error en el renglon 1, columna promedio: Tipo de dato incorrecto
-Error en el renglon 2, columna promedio: Tipo de dato incorrecto
+Error en el renglon 2, columna matricula: Tipo de dato incorrecto
 Error en el renglon 3: Datos incorrectos o incompletos
-Error en el renglon 4, columna promedio: Tipo de dato incorrecto
 Error en el renglon 5: Datos incorrectos o incompletos
-Error en el renglon 6, columna matricula: Tipo de dato incorrecto
-Error en el renglon 7, columna promedio: Tipo de dato incorrecto
 Error en el renglon 8: Datos incorrectos o incompletos
