@@ -4,8 +4,7 @@ const nombreArchivo = 'database.txt';
 const Errores = 'logErrores.txt';
 const hdArchivo = ['nick','matricula', 'facu', 'carrera', 'promedio', 'edad', 'correo'];
 const tipoDatos = {'nick':'string', 'matricula':'number','facu':'string', 'carrera':'string',
-    'promedio':'float', 'edad':'number', 'correo':'string'
-};
+    'promedio':'float', 'edad':'number', 'correo':'string'};
 const correoVal = /[^@]+@[^.]+\..+/;
 
 //Función para validar el tipo de dato
