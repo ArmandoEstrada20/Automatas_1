@@ -3,6 +3,23 @@ const fs = require('fs');
 const nombreArchivo = 'database.txt';
 const Errores = 'logErrores.txt';
 const hdArchivo = ['nick','matricula', 'facu', 'carrera', 'promedio', 'edad', 'correo'];
+const tipoDatos = {'nick':'string', 'matricula':'number','facu':'string', 'carrera':'string',
+    'promedio':'float', 'edad':'number', 'correo':'string'
+};
+
+//Función para validar el tipo de dato
+function validacionTD(dato, tipo){
+    switch(tipo){
+        case 'string':
+            return typeof dato === 'string';
+        case'number':
+            return !isNaN(dato);
+        case 'float':
+            return !isNaN(dato) && dato.includes('.');
+        default:
+            return false;
+    }
+}
 
 //Verificamos si el archivo esta creado.
 if(!fs.existsSync(nombreArchivo)){
@@ -37,6 +54,14 @@ fs.readFile('database.txt', 'utf8', (err, data) => {
         if(query.some(cell => cell.trim() === '')){
             errorLog += `Error en el renglon ${i}: Datos incorrectos o incompletos\n`;
             continue;
+        }
+
+        //Valida que los tipos de datos correspondan
+        for(let r=0; r < query.length; r++){
+            if(!validacionTD(query[r], tipoDatos[hdArchivo[r]])){
+                errorLog += `Error en el renglon ${i}, columna ${hdArchivo[r]}: Tipo de dato incorrecto\n`;
+                break;
+            }
         }
 
         console.log("Renglon " + i + " : " + cadena_split[i]);
