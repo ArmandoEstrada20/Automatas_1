@@ -6,6 +6,7 @@ const hdArchivo = ['nick','matricula', 'facu', 'carrera', 'promedio', 'edad', 'c
 const tipoDatos = {'nick':'string', 'matricula':'number','facu':'string', 'carrera':'string',
     'promedio':'float', 'edad':'number', 'correo':'string'
 };
+const correoVal = /[^@]+@[^.]+\..+/;
 
 //Función para validar el tipo de dato
 function validacionTD(dato, tipo){
@@ -62,6 +63,13 @@ fs.readFile('database.txt', 'utf8', (err, data) => {
                 errorLog += `Error en el renglon ${i}, columna ${hdArchivo[r]}: Tipo de dato incorrecto\n`;
                 break;
             }
+        }
+
+        //Valida el tipo de dato en el correo
+        if (!correoVal.test(query[6])) {
+            console.log("\n"+"Renglon " + i + " : dato incorrecto en columna correo."+ query[6]);
+            errorLog += `Renglon  ${i} : ${cadena_split[i]} error en la dirección de correo.\n`;
+            continue;
         }
 
         console.log("Renglon " + i + " : " + cadena_split[i]);

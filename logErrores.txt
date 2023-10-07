@@ -1,3 +1,4 @@
+Renglon  1 : pako,306403,Inge,Computacion,87,20,pakoite.edu.mx error en la dirección de correo.
 Error en el renglon 2, columna matricula: Tipo de dato incorrecto
 Error en el renglon 3: Datos incorrectos o incompletos
 Error en el renglon 5: Datos incorrectos o incompletos

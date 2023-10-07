@@ -1,5 +1,5 @@
 nick,matricula,facu,carrera,promedio,edad,correo
-pako,306403,Inge,Computacion,87,20,pako@ite.edu.mx
+pako,306403,Inge,Computacion,87,20,pakoite.edu.mx
 dobleP,L65658,Lic,ciencias,90,23,doblep@ite.edu.mx
 morgan,,Inge,,
 pepe,256369,ciencias,computacionales,90,25,al1306405@ite.edu.mx
