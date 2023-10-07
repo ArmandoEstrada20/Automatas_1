@@ -60,10 +60,10 @@ fs.readFile('database.txt', 'utf8', (err, data) => {
         for(let r=0; r < query.length; r++){
             if(!validacionTD(query[r], tipoDatos[hdArchivo[r]])){
                 errorLog += `Error en el renglon ${i}, columna ${hdArchivo[r]}: Tipo de dato incorrecto\n`;
-                break;
+                continue;
             }
         }
-
+        
         //Valida el tipo de dato en el correo
         if (!correoVal.test(query[6])) {
             console.log("\n"+"Renglon " + i + " : dato incorrecto en columna correo."+ query[6]);
